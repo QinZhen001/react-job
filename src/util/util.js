@@ -17,3 +17,8 @@ export function getChatId(userId, targeId) {
     return [userId, targeId].sort().join('_')
 }
 
+
+export function getLast(arr) {
+    return arr[arr.length - 1]
+}
+
