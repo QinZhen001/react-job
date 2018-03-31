@@ -5,6 +5,8 @@
 * UI库Ant Design Mobile
 * 数据库MongoDB
 * 即时聊天,采用socket.io双向通信
+* 服务端渲染SSR
+
 
 
 
