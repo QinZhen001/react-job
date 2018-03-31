@@ -1,7 +1,10 @@
+/**
+ * 根据用户信息，返回跳转地址
+ * @param type    user.type /boss /genius
+ * @param avatar  user.avatar
+ * @returns {string}  应该跳转地址
+ */
 export function getRedirectPath({type, avatar}) {
-    // 根据用户信息，返回跳转地址
-    // user.type /boss /genius
-    // user.avatar /geniusinfo
     let url = (type === 'boss') ? '/boss' : '/genius'
     if (!avatar) {
         url += 'info'
@@ -13,3 +16,4 @@ export function getRedirectPath({type, avatar}) {
 export function getChatId(userId, targeId) {
     return [userId, targeId].sort().join('_')
 }
+
