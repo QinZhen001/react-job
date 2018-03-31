@@ -1,6 +1,6 @@
 import React from 'react'
 
-
+// 高阶组件 包裹handleChange方法
 export default function handleChange(Comp) {
     return class WrapperComp extends React.Component {
         constructor(props) {
