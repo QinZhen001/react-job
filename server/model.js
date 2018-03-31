@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 // 链接mongo 并使用imooc这个集合
 const DB_URL = 'mongodb://localhost:27017/imooc-chat'
 mongoose.connect(DB_URL)
-mongoose.connection.on("connected",function () {
+mongoose.connection.on("connected", function () {
     console.log("mongodb connect")
 })
 
@@ -21,7 +21,14 @@ const models = {
         'company': {'type': String},
         'money': {'type': String}
     },
-    chat: {}
+    chat: {
+        'chatid': {'type': String, 'require': true},
+        'from': {'type': String, 'require': true},   //userid 也就是 user._id
+        'to': {'type': String, 'require': true}, //userid 也就是 user._id
+        'read': {'type': Boolean, 'default': false},
+        'content': {'type': String, 'require': true, 'default': ''},
+        'create_time': {'type': Number, 'default': Date.now}
+    }
 }
 
 for (let m in models) {

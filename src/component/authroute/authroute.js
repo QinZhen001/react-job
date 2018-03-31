@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
-import {loadData} from '../../reducer/user.redux'
+import {loadData} from '../../redux/user.redux'
 import {connect} from 'react-redux'
 
 @withRouter
@@ -10,6 +10,7 @@ import {connect} from 'react-redux'
     {loadData}
 )
 class AuthRoute extends React.Component {
+    // 用来判断当前是否登录(根据cookie判断)
     componentDidMount() {
         console.log(this.props)
         const publicList = ['/login', '/register']
@@ -17,7 +18,7 @@ class AuthRoute extends React.Component {
         if (publicList.indexOf(pathname) > -1) {
             return null
         }
-        axios.get('user/info')
+        axios.get('user/info')   //info信息是通过当前cookie查询数据库拿到的
             .then(res => {
                 if (res.status === 200) {
                     if (res.data.code === 0) {

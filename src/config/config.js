@@ -9,6 +9,7 @@ axios.interceptors.request.use(config => {
 
 //拦截响应
 axios.interceptors.response.use(config => {
+    console.log(config)
     Toast.hide()
     return config
 })
