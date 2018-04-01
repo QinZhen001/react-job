@@ -29,9 +29,9 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user', userRouter)
 
-app.use(function (req, res, next) {
-    if (req.url.startWith('/user/') ||req.url)
-        })
+// app.use(function (req, res, next) {
+//     if (req.url.startWith('/user/') ||req.url)
+//         })
 app.use('/', express.static(path.resolve('build')))
 
 server.listen(9093, function () {
