@@ -24,7 +24,6 @@ export default class App extends React.Component {
     }
 
     render() {
-
         return this.state.hasError
             ? <h2>出错了</h2>
             : (

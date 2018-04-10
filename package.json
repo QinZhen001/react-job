@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.1.6",
+    "asset-require-hook": "^1.2.0",
     "autoprefixer": "7.1.2",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
@@ -21,6 +22,7 @@
     "cookie-parser": "^1.4.3",
     "cross-env": "^5.1.4",
     "css-loader": "0.28.4",
+    "css-modules-require-hook": "^4.2.3",
     "dotenv": "4.0.0",
     "eslint": "4.4.1",
     "eslint-config-react-app": "^2.0.0",
@@ -69,7 +71,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "nodemon server/server.js"
+    "server": "cross-env NODE_ENV=test nodemon --exec babel-node server/server.js"
   },
   "jest": {
     "collectCoverageFrom": [
