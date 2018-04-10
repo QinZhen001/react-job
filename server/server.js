@@ -9,6 +9,12 @@ const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
+const React = require("react")
+
+function () {
+    
+}
+
 
 //io是全局 socket是本次链接
 io.on('connection', function (socket) {
@@ -29,9 +35,14 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user', userRouter)
 
-// app.use(function (req, res, next) {
-//     if (req.url.startWith('/user/') ||req.url)
-//         })
+app.use(function (req, res, next) {
+    if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
+        return next()
+    }
+    console.log('path', path.resolve('build/index.html'))
+    return res.sendFile(path.resolve('build/index.html'))
+})
+
 app.use('/', express.static(path.resolve('build')))
 
 server.listen(9093, function () {
