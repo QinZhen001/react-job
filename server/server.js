@@ -69,20 +69,9 @@ app.use(function (req, res, next) {
         applyMiddleware(thunk),
     ))
 
-    const markup = renderToString(
-        (<Provider store={store}>
-            <StaticRouter
-                location={req.url}
-                context={context}
-            >
-                <App></App>
-            </StaticRouter>
-        </Provider>)
-    )
 
-    //骨架 (可以在这里做SEO)
-    const pageHtml = `
-    <!doctype html>
+    //<div id="root">的闭合标签在后面
+    res.write(`<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -97,15 +86,65 @@ app.use(function (req, res, next) {
 <noscript>
   You need to enable JavaScript to run this app.
 </noscript>
-<div id="root">${markup}</div>
-
-</body>
-<script src="${staticPath["main.js"]}"></script>
-</html>
-`
+<div id="root">
+    `)
 
 
-    res.send(pageHtml)
+    const markupStream = renderToNodeStream(
+        (<Provider store={store}>
+            <StaticRouter
+                location={req.url}
+                context={context}
+            >
+                <App></App>
+            </StaticRouter>
+        </Provider>)
+    )
+    markupStream.pipe(res, {end: false})
+
+    markupStream.on("end", () => {
+        res.write(`</div></body><script src="${staticPath["main.js"]}"></script></html>`)
+        res.end()
+    })
+
+
+// renderToString方法
+//     const markup = renderToString(
+//         (<Provider store={store}>
+//             <StaticRouter
+//                 location={req.url}
+//                 context={context}
+//             >
+//                 <App></App>
+//             </StaticRouter>
+//         </Provider>)
+//     )
+    //骨架 (可以在这里做SEO)
+//     const pageHtml = `
+//     <!doctype html>
+// <html lang="en">
+// <head>
+//   <meta charset="utf-8">
+//   <meta name="viewport"
+//         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+//   <meta name="theme-color" content="#000000">
+//   <meta name="keywords" content="React,Redux,Imooc,聊天，SSR">
+//   <title>React App</title>
+//   <link rel="stylesheet" href="${staticPath["main.css"]}">
+// </head>
+// <body>
+// <noscript>
+//   You need to enable JavaScript to run this app.
+// </noscript>
+// <div id="root">${markup}</div>
+//
+// </body>
+// <script src="${staticPath["main.js"]}"></script>
+// </html>
+// `
+
+
+    // res.send(pageHtml)
 })
 
 app.use('/', express.static(path.resolve('build')))

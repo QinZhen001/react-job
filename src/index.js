@@ -14,7 +14,7 @@ import './index.css'
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
 
-ReactDOM.render(
+ReactDOM.hydrate(
     (
         <Provider store={store}>
             <BrowserRouter>

@@ -62,17 +62,18 @@ class Dashboard extends React.Component {
             }
         ]
         const {pathname} = this.props.location
-        const page = navList.find(item => item.path === pathname)
+        console.log("this.props.location", this.props.location)
+        const page = navList.find(item => item.path == pathname)
         return (
             <div>
                 <NavBar className="fixed-header" mode="dark">
                     {page ? page.title : ''}
                 </NavBar>
                 <div style={{marginTop: 45}}>
-                    <Switch>
-                        <Route key={page.path} path={page.path} component={page.component}>
-                        </Route>
-                    </Switch>
+                    {/*<QueueAnim type={"scaleX"} duration={500}>*/}
+                    {/*<Route key={page.path} path={page.path} component={page.component}>*/}
+                    {/*</Route>*/}
+                    {/*</QueueAnim>*/}
                 </div>
                 <NavTabBar data={navList}>
                 </NavTabBar>
