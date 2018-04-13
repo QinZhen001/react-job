@@ -6,14 +6,8 @@
 * 数据库MongoDB
 * 即时聊天,采用socket.io双向通信
 * 服务端渲染SSR
-
-
 ![enter description here][1]
-
-
 ![enter description here][2]
-
-
 ![enter description here][3]
 
 
