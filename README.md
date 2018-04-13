@@ -8,11 +8,11 @@
 * 服务端渲染SSR
 
 <div align="center">
-<img src="https://github.com/QinZhen001/react-job/blob/master/img/first-page.jpg" height="330" width="190" >
+<img src="https://github.com/QinZhen001/react-job/blob/master/img/first-page.jpg" height="400" width="250" >
 
-<img src="https://github.com/QinZhen001/react-job/blob/master/img/home-page.png" height="330" width="190" >
+<img src="https://github.com/QinZhen001/react-job/blob/master/img/home-page.png" height="400" width="250" >
 
-<img src="https://github.com/QinZhen001/react-job/blob/master/img/chat-page.png" height="330" width="190" >
+<img src="https://github.com/QinZhen001/react-job/blob/master/img/chat-page.png" height="400" width="250" >
 
  </div>
 
