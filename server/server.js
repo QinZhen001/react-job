@@ -14,7 +14,7 @@ import csshook from 'css-modules-require-hook/preset'
 import assethook from 'asset-require-hook'
 assethook({
     extensions: ['png'],
-    limit: 8000
+    limit: 9000
 })
 
 import {renderToString, renderToNodeStream} from 'react-dom/server'
